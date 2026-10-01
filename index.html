@@ -15,37 +15,32 @@
   <button onclick="mostrarSeccion('parametros')">Parámetros</button>
   <button onclick="mostrarSeccion('clientes')">Clientes</button>
   <button onclick="mostrarSeccion('creditos')">Créditos</button>
+  <!-- NUEVO: Botón de navegación para el historial -->
+  <button onclick="mostrarSeccion('historialCreditos'); pintarCreditos(creditos);">Créditos Registrados</button>
 </nav>
 
 <!-- Sección Parámetros -->
 <section id="parametros" class="activa">
   <h2>Configurar Parámetros</h2>
-
   <label>Tasa de interés:</label>
   <input type="number" id="tasaInteres" min="10" max="20" value="15">
   <span>%</span>
-
   <br>
   <button onclick="guardarTasa()">Guardar tasa</button>
-
   <p id="mensajeTasa"></p>
 </section>
 
 <!-- Sección Clientes -->
 <section id="clientes">
   <h2>Registro de Clientes</h2>
-
   <input type="text" id="txtCedula" placeholder="Cédula">
   <input type="text" id="txtNombre" placeholder="Nombre">
   <input type="text" id="txtApellido" placeholder="Apellido">
   <input type="number" id="txtIngresos" placeholder="Ingresos">
   <input type="number" id="txtEgresos" placeholder="Egresos">
-
   <br>
-
   <button onclick="guardarCliente()">Guardar cliente</button>
   <button onclick="limpiar()">Limpiar</button>
-
   <table>
     <thead>
       <tr>
@@ -63,30 +58,55 @@
   </table>
 </section>
 
-<!-- Nueva Sección Créditos (Parte 2 del Taller) -->
+<!-- Sección Créditos -->
 <section id="creditos">
   <h2>Simulación de Créditos</h2>
-
   <label>Cédula del Cliente:</label>
   <input type="text" id="txtCedulaCredito" placeholder="Ingrese cédula">
   <button onclick="buscarClienteCredito()">Buscar Cliente</button>
 
-  <!-- Contenedor para mostrar los datos del cliente dinámicamente -->
   <div id="datosClienteCredito" class="card"></div>
-
   <br>
   <label>Monto solicitado:</label>
   <input type="number" id="txtMonto" placeholder="Monto">
-  
   <br>
   <label>Plazo (meses):</label>
   <input type="number" id="txtPlazo" placeholder="Plazo en meses">
-
   <br>
   <button onclick="calcularCredito()">Calcular Crédito</button>
 
   <!-- Contenedor para mostrar el resultado -->
   <div id="resultadoCredito"></div>
+
+  <!-- NUEVO: Botón Asignar Crédito (inicialmente deshabilitado) -->
+  <br><br>
+  <button id="btnAsignarCredito" onclick="asignarCredito()" disabled style="background-color: gray; cursor: not-allowed;">Asignar Crédito</button>
+</section>
+
+<!-- NUEVA SECCIÓN: Créditos Registrados (Historial) -->
+<section id="historialCreditos">
+  <h2>Historial de Créditos Registrados</h2>
+  <label>Filtrar por Cédula (Opcional):</label>
+  <input type="text" id="txtCedulaFiltro" placeholder="Ingrese cédula a buscar">
+  <button onclick="buscarCreditosCliente()">Buscar Créditos</button>
+  <button onclick="pintarCreditos(creditos)">Ver Todos</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cédula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Monto</th>
+        <th>Tasa</th>
+        <th>Plazo</th>
+        <th>Cuota</th>
+      </tr>
+    </thead>
+    <tbody id="tablaCreditosRegistrados">
+      <!-- Historial cargado dinámicamente -->
+    </tbody>
+  </table>
 </section>
 
 <script src="simulador_completo.js"></script>
