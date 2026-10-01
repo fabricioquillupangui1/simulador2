@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Créditos</title>
+  <!-- El enlace al CSS debe ir dentro del head -->
+  <link rel="stylesheet" href="simulador_completo.css">
+</head>
+<body>
+
+<header>
+  <h1>Sistema Básico de Créditos</h1>
+</header>
+
+<nav>
+  <button onclick="mostrarSeccion('parametros')">Parámetros</button>
+  <button onclick="mostrarSeccion('clientes')">Clientes</button>
+</nav>
+
+<!-- Se agrega 'class="activa"' para que sea visible por defecto al iniciar -->
+<section id="parametros" class="activa">
+  <h2>Configurar Parámetros</h2>
+
+  <label>Tasa de interés:</label>
+  <!-- Atributos min, max y value requeridos en la Parte 2 -->
+  <input type="number" id="tasaInteres" min="10" max="20" value="15">
+  <span>%</span>
+
+  <br>
+  <button onclick="guardarTasa()">Guardar tasa</button>
+
+  <p id="mensajeTasa"></p>
+</section>
+
+<section id="clientes">
+  <h2>Registro de Clientes</h2>
+
+  <!-- Inputs con sus respectivos IDs y placeholders -->
+  <input type="text" id="txtCedula" placeholder="Cédula">
+  <input type="text" id="txtNombre" placeholder="Nombre">
+  <input type="text" id="txtApellido" placeholder="Apellido">
+  <input type="number" id="txtIngresos" placeholder="Ingresos">
+  <input type="number" id="txtEgresos" placeholder="Egresos">
+
+  <br>
+
+  <button onclick="guardarCliente()">Guardar cliente</button>
+  <button onclick="limpiar()">Limpiar</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cédula</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Ingresos</th>
+        <th>Egresos</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaClientes">
+      <!-- Los datos y botones se cargarán de forma dinámica desde simulador_completo.js -->
+    </tbody>
+  </table>
+</section>
+
+<script src="simulador_completo.js"></script>
+<script src="utilitarios.js"></script>
+</body>
+</html>
