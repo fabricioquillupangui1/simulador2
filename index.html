@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Sistema de Créditos</title>
-  <!-- El enlace al CSS debe ir dentro del head -->
   <link rel="stylesheet" href="simulador_completo.css">
 </head>
 <body>
@@ -15,14 +14,14 @@
 <nav>
   <button onclick="mostrarSeccion('parametros')">Parámetros</button>
   <button onclick="mostrarSeccion('clientes')">Clientes</button>
+  <button onclick="mostrarSeccion('creditos')">Créditos</button>
 </nav>
 
-<!-- Se agrega 'class="activa"' para que sea visible por defecto al iniciar -->
+<!-- Sección Parámetros -->
 <section id="parametros" class="activa">
   <h2>Configurar Parámetros</h2>
 
   <label>Tasa de interés:</label>
-  <!-- Atributos min, max y value requeridos en la Parte 2 -->
   <input type="number" id="tasaInteres" min="10" max="20" value="15">
   <span>%</span>
 
@@ -32,10 +31,10 @@
   <p id="mensajeTasa"></p>
 </section>
 
+<!-- Sección Clientes -->
 <section id="clientes">
   <h2>Registro de Clientes</h2>
 
-  <!-- Inputs con sus respectivos IDs y placeholders -->
   <input type="text" id="txtCedula" placeholder="Cédula">
   <input type="text" id="txtNombre" placeholder="Nombre">
   <input type="text" id="txtApellido" placeholder="Apellido">
@@ -59,9 +58,35 @@
       </tr>
     </thead>
     <tbody id="tablaClientes">
-      <!-- Los datos y botones se cargarán de forma dinámica desde simulador_completo.js -->
+      <!-- Datos cargados dinámicamente -->
     </tbody>
   </table>
+</section>
+
+<!-- Nueva Sección Créditos (Parte 2 del Taller) -->
+<section id="creditos">
+  <h2>Simulación de Créditos</h2>
+
+  <label>Cédula del Cliente:</label>
+  <input type="text" id="txtCedulaCredito" placeholder="Ingrese cédula">
+  <button onclick="buscarClienteCredito()">Buscar Cliente</button>
+
+  <!-- Contenedor para mostrar los datos del cliente dinámicamente -->
+  <div id="datosClienteCredito" class="card"></div>
+
+  <br>
+  <label>Monto solicitado:</label>
+  <input type="number" id="txtMonto" placeholder="Monto">
+  
+  <br>
+  <label>Plazo (meses):</label>
+  <input type="number" id="txtPlazo" placeholder="Plazo en meses">
+
+  <br>
+  <button onclick="calcularCredito()">Calcular Crédito</button>
+
+  <!-- Contenedor para mostrar el resultado -->
+  <div id="resultadoCredito"></div>
 </section>
 
 <script src="simulador_completo.js"></script>
